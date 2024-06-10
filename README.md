@@ -14,7 +14,7 @@ A ReceitaWS API é uma aplicação web que permite aos usuários consultar infor
 
 ##Observações:
 
-1. O banco de dados usado foi o LocalDb, se necessário:
+ O banco de dados usado foi o LocalDb, se necessário:
 
  Abra o arquivo appsettings.json
 
