@@ -16,11 +16,11 @@ A ReceitaWS API é uma aplicação web que permite aos usuários consultar infor
   
 ## Passos:
 
--- Use o comando: " dotnet restore "  para instalar as dependências
+- Use o comando: " dotnet restore "  para instalar as dependências
 
--- Execute o comando: " dotnet ef database update --projeto + caminho do projeto "  para criar o banco de dados:
+- Execute o comando: " dotnet ef database update --projeto + caminho do projeto "  para criar o banco de dados:
          
--- Revise e faça as alterações e adições de pacotes e configurações necessárias.
+- Revise e faça as alterações e adições de pacotes e configurações necessárias.
 
 ## Compile o projeto
 - dotnet build
