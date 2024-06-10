@@ -13,7 +13,13 @@ A ReceitaWS API é uma aplicação web que permite aos usuários consultar infor
    git clone https://github.com/seu-usuario/receitaws-api.git
 
 - Use a IDE Visual Studio de preferência versão 2022 para poder rodar a aplicação
-  
+
+## Instalação de Dependências
+
+1. Instale o pacote `Newtonsoft.Json`:
+   ```sh
+   Install-Package Newtonsoft.Json
+
 ## Passos:
 
 - Use o comando: " dotnet restore "  para instalar as dependências
