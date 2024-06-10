@@ -12,7 +12,7 @@ A ReceitaWS API é uma aplicação web que permite aos usuários consultar infor
    ```sh
    git clone https://github.com/seu-usuario/receitaws-api.git
 
-##Observações:
+## Observações:
 
  O banco de dados usado foi o LocalDb, se necessário:
 
