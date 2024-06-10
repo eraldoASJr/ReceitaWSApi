@@ -1,0 +1,6 @@
+@ReceitaWSApi_HostAddress = http://localhost:5234
+
+GET {{ReceitaWSApi_HostAddress}}/ReceitaWSApi/
+Accept: application/json
+
+###
