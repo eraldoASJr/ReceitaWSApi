@@ -12,20 +12,26 @@ A ReceitaWS API é uma aplicação web que permite aos usuários consultar infor
    ```sh
    git clone https://github.com/seu-usuario/receitaws-api.git
 
-## Observações:
+- Use a IDE Visual Studio de preferência versão 2022 para poder rodar a aplicação
+  
+## Passos:
 
- - O banco de dados usado foi o LocalDb, se necessário:
+-- Use o comando: " dotnet restore "  para instalar as dependências
 
- - Abra o arquivo appsettings.json
-
- - Substitua a string de conexão em DefaultConnection pelo seu próprio banco de dados SQL Server
-
- - Execute o comando para criar o banco de dados:
-         dotnet ef database update.
-
+-- Execute o comando: " dotnet ef database update --projeto + caminho do projeto "  para criar o banco de dados:
+         
+-- Revise e faça as alterações e adições de pacotes e configurações necessárias.
 
 ## Compile o projeto
 - dotnet build
 
 ## Execute o projeto
 - dotnet run
+
+## Observações:
+
+ 1. O banco de dados usado foi o LocalDb, se necessário:
+
+ - Abra o arquivo appsettings.json
+
+ - Substitua a string de conexão em DefaultConnection pelo seu próprio banco de dados SQL Server
