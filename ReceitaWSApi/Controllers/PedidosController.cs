@@ -2,6 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using ReceitaWSApi.Data;
 using ReceitaWSApi.Models;
+using System.Net.Http;
+using System.Text.RegularExpressions;
+using System.Xml;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ReceitaWSApi.Controllers
 {
@@ -19,29 +25,34 @@ namespace ReceitaWSApi.Controllers
         }
 
         // POST: api/Pedidos
-        [HttpPost]
-      
-        public async Task<ActionResult<Pedido>> PostPedido([FromBody] CNPJModel model)
-        {
-            var response = await _httpClient.GetAsync($"https://www.receitaws.com.br/v1/cnpj/{model.CNPJ}");
-            if (!response.IsSuccessStatusCode)
-            {
-                return BadRequest("Failed to retrieve data from ReceitaWS");
-            }
+       [HttpPost]
+       public async Task<ActionResult<Pedido>> PostPedido([FromBody] CNPJModel model)
+       {
+           // Limpar caracteres de formatação do CNPJ
+           var cnpjLimpo = Regex.Replace(model.CNPJ, "[^0-9]", "");
 
-            var resultado = await response.Content.ReadAsStringAsync();
+           var response = await _httpClient.GetAsync($"https://www.receitaws.com.br/v1/cnpj/{cnpjLimpo}");
+           if (!response.IsSuccessStatusCode)
+           {
+               return BadRequest("Failed to retrieve data from ReceitaWS");
+           }
 
-            var pedido = new Pedido
-            {
-                CNPJ = model.CNPJ,
-                Resultado = resultado
-            };
+           var resultado = await response.Content.ReadAsStringAsync();
 
-            _context.Pedidos.Add(pedido);
-            await _context.SaveChangesAsync();
+           // Desserializar e reformatar o resultado JSON
+           var jsonFormatado = JToken.Parse(resultado).ToString(Newtonsoft.Json.Formatting.Indented);
 
-            return CreatedAtAction("GetPedido", new { id = pedido.Id }, pedido);
-        }
+           var pedido = new Pedido
+           {
+               CNPJ = model.CNPJ,  // Armazena o CNPJ com formatação original
+               Resultado = jsonFormatado  // Armazena o JSON formatado
+           };
+
+           _context.Pedidos.Add(pedido);
+           await _context.SaveChangesAsync();
+
+           return CreatedAtAction("GetPedido", new { id = pedido.Id }, pedido);
+       }
 
         // GET: api/Pedidos/{id}
         [HttpGet("{id}")]
