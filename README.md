@@ -15,10 +15,14 @@ A ReceitaWS API é uma aplicação web que permite aos usuários consultar infor
 ##Observações:
 
 1. O banco de dados usado foi o LocalDb, se necessário:
-# Abra o arquivo appsettings.json
-# Substitua a string de conexão em DefaultConnection pelo seu próprio banco de dados SQL Server
-# Execute o comando para criar o banco de dados:
-# dotnet ef database update.
+
+ Abra o arquivo appsettings.json
+
+ Substitua a string de conexão em DefaultConnection pelo seu próprio banco de dados SQL Server
+
+ Execute o comando para criar o banco de dados:
+
+ dotnet ef database update.
 
 
 ## Compile o projeto
